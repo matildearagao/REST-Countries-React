@@ -1,0 +1,31 @@
+// Media Queries //
+
+$phabletPlusWidth: 1279px;
+$phabletWidth: 1023px;
+$tabletWidth: 767px;
+$mobileWidth: 511px;
+
+
+@mixin phabletPlus {
+    @media (max-width: #{$phabletPlusWidth}) {
+        @content;
+    }
+}
+
+@mixin phablet {
+    @media (max-width: #{$phabletWidth}) {
+        @content;
+    }
+}
+
+@mixin tablet {
+	@media (max-width: #{$tabletWidth}) {
+		@content;
+	}
+}
+
+@mixin mobile {
+	@media (max-width: #{$mobileWidth}) {
+		@content;
+	}
+}

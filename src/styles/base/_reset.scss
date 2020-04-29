@@ -1,0 +1,19 @@
+*,
+*::after,
+*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+
+body{
+    box-sizing: border-box;
+    font-family: $font;
+    background-color: $very-dark-blue;
+
+    .wrapper{
+        max-width: 1440px;
+        margin: 60px auto 0;
+    }
+}

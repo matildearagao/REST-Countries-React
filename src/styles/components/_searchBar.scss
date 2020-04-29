@@ -1,0 +1,21 @@
+.searchbar {
+  position: relative;
+  
+
+  input {
+    width: 400px;
+    min-height: 40px;
+    margin: 30px auto 0 60px;
+    height: 100%;
+    background-color: $dark-blue;
+    outline: none;
+    border: none;
+    padding: 0 40px;
+    color: $white;
+  }
+
+  input::placeholder {
+    // color: $white;
+    font-size: $font-small;
+  }
+}
