@@ -1,0 +1,96 @@
+.countries {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 50px;
+  row-gap: 80px;
+  margin-top: 60px;
+  padding: 0 60px;
+
+  @include phablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include mobile {
+    grid-template-columns: 1fr;
+    row-gap: 30px;
+  }
+  .countries__card {
+    list-style: none;
+    color: $white;
+    background-color: $dark-blue;
+    box-shadow: $box-shadow;
+
+    cursor: pointer;
+
+    .countries__flag {
+      width: 100%;
+      max-height: 200px;
+    }
+
+    .countries__details {
+      padding: 20px 20px 30px;
+      font-size: $font-small;
+
+      p {
+        margin-bottom: 10px;
+      }
+      span {
+        font-weight: 600;
+      }
+
+      .countries__name {
+        font-weight: 600;
+        margin-bottom: 22px;
+        font-size: 18px;
+      }
+    }
+
+    &:hover {
+      transform: translateY(-10px);
+    }
+  }
+
+  &.light {
+    background-color: $white;
+    color: $dark-blue;
+
+    .countries__card {
+      background-color: $white;
+      color: $dark-blue;
+    }
+  }
+}
+
+.countries__wrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: $very-dark-blue;
+  min-height: calc(100vh - 200px);
+
+
+  &.light {
+    background-color: $white;
+
+    button{
+      color:$dark-blue;
+      background-color: $white;
+    }
+  }
+
+  button {
+    width: 100px;
+    height: 40px;
+    margin: 40px auto 20px auto;
+    text-align: center;
+    outline: none;
+    border: none;
+    box-shadow: $box-shadow;
+    color: $white;
+    background-color: $dark-blue;
+    cursor: pointer;
+
+    &:hover{
+      box-shadow: none;
+    }
+  }
+}

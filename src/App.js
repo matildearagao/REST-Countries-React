@@ -1,73 +1,40 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Countries from "./components/Countries";
-import SearchCountry from "./components/SearchCountry";
+import Country from "./components/Country";
 import Navbar from "./components/Navbar";
 
 function App() {
-  const [countries, setCountries] = useState([]);
-  const [countryToFilter, setCountryToFilter] = useState("");
-  const [borders, setBorders] = useState([]);
-  const [bordersInput, setBordersInput] = useState([]);
+  const [darkMode, setMode] = useState(true);
 
-  
-  
-
-  useEffect(() => {
-    axios.get("https://restcountries.eu/rest/v2/all").then((response) => {
-      setCountries(response.data);
-    });
-      },[ ]);
-
-  const handleFilter = (e) => {
-    setCountryToFilter(e.target.value);
-
-    if (countriesFiltered.length === 1) {
-      setBordersInput(countriesFiltered[0].borders);
-      handleBorders();
-    } else setBordersInput([]); setBorders([])
-  };
-
-  const changeCountryFiltered = (filter) => {
-    setCountryToFilter(filter);
-  };
-
-  const countriesFiltered = countryToFilter
-    ? countries.filter((country) =>
-        country.name.toLowerCase().includes(countryToFilter.toLowerCase())
-      )
-    : countries;
-
-  const handleBorders = () => {
-    bordersInput.forEach((code) => {
-      axios
-        .get(`https://restcountries.eu/rest/v2/alpha?codes=${code}`)
-        .then((response) => {
-          response.data.forEach((country) => {
-            borders.push(country.name);
-            const bordersNew = Array.from(new Set(borders));
-            setBorders(bordersNew);
-          });
-        });
-    });
+  const changeMode = () => {
+    setMode(!darkMode);
   };
 
   return (
-    <>
-      <Navbar />
-      <div className="wrapper">
-        <SearchCountry
-          countryToFilter={countryToFilter}
-          handleFilter={handleFilter}
+    <BrowserRouter>
+      <Navbar
+        changeMode={changeMode}
+        mode={darkMode ? "" : "light"}
+        modeText={darkMode ?  "Light Mode" : "Dark Mode"}
+        moonMode={darkMode ?  "fa fa-sun-o" : "fa fa-moon-o"}
+      />
+      <Switch>
+        <Route
+          exact
+          path="/"
+          render={(props) => <Countries {...props} mode={darkMode} />}
         />
-        <Countries
-          countries={countriesFiltered}
-          changeCountryFiltered={changeCountryFiltered}
-          borders={borders}
+        <Route
+          exact
+          path={"/country/:name"}
+          render={(props) => (
+            <Country {...props} mode={darkMode ? "" : "light"} />
+          )}
         />
-      </div>
-    </>
+      </Switch>
+    </BrowserRouter>
   );
 }
 

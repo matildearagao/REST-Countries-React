@@ -1,74 +1,184 @@
-.countries__wrapper{
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    column-gap: 50px;
-    row-gap: 80px;
-    margin-top: 60px;
-    padding: 0 60px;
+.country {
+  margin-top: 100px;
+  padding: 0 60px;
+  color: $white;
+  font-size: $font-big;
+  display: flex;
+  justify-content: space-between;
 
-}
+  font-size: $font-small;
+  line-height: 1.8;
 
-.countries__noresult{
-    margin-top: 60px;
-    padding: 0 60px;
-    color: $white;
-}
+  span{
+    font-weight: 600;
+  }
 
-.country{
-    list-style: none;
-    color: $white;
-    background-color: $dark-blue;
+  @include tablet {
+    display: flex;
+    flex-direction: column;
+  }
 
-    cursor: pointer;
+  @include mobile{
+    padding: 0 30px;
+  }
 
-    &__flag{
-        width: 100%;
-        max-height: 200px;
+
+  > div {
+    width: 45%;
+    float: left;
+
+    @include tablet {
+      width: 100%;
+    }
+  }
+
+  .country__flag {
+    box-shadow: $box-shadow;
+  }
+
+  .country__details{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 30px;
+    padding: 0;
+
+    >div{
+      width: 45%;
+    float: left;
+
+    @include tablet {
+      width: 100%;
+    }
+    }
+   
+  }
+  .country__left {
+    display: flex;
+    flex-direction: column;
+    img {
+      width: 100%;
+    }
+    .country__weather {
+      width: 100%;
+      font-size: $font-small;
+      line-height: 1.5;
+      margin-top: 40px;
+
+      @include mobile{
+        margin-bottom: 30px;
+      }
+
+      img {
+        width: 60px;
+        margin-bottom: 10px;
+      }
+      h4 {
+        margin-bottom: 10px;
+      }
+    }
+  }
+  .country__borders {
+    display: inline-flex;
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+    @include mobile{
+      flex-direction: column;
     }
 
-    &__details{
-        padding: 20px 20px 30px;
-        font-size: $font-small;
-       
-        p{
-            margin-bottom: 10px;
-        }
-        span{
-            font-weight: 600;
-        }
-    
-
-    .country__name{
-        font-weight: 600;
-        margin-bottom: 20px;
-        font-size: $font-big;
-    }
-}
-
-
-    &:hover{
-        transform: translateY(-10px);
+    p {
+      margin-right: 10px;
     }
 
-    &__single{
-        margin-top: 60px;
-        padding: 0 60px;
+    ul {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      @include mobile{
+        margin-top: 10px;
+      }
+    }
+
+    li {
+      list-style: none;
+      display: block;
+      margin-right: 10px;
+      margin-bottom: 10px;
+
+      button {
+        width: 80px;
+        height: 40px;
+        background-color: $dark-blue;
+        box-shadow: $box-shadow;
         color: $white;
-        font-size: $font-big;
-        display: flex;
-        justify-content: space-between;
+        cursor: pointer;
+        border: none;
+        outline: none;
 
-        div{
-            width: 45%;
-            float: left;
+        &:hover{
+          box-shadow: none;
         }
+      }
     }
-    &__left{
-        display: flex;
-        flex-direction: column;
-        img{
-            width: 100%;
-        }
+  }
+  
+  &.light{
+    background-color: $white;
+    color: $dark-blue;
+
+    .country__borders li button{
+      background-color: $white;
+      color: $dark-blue;
     }
+  }
+}
+
+.country__wrapper{
+  min-height: 100vh;
+  background-color: $very-dark-blue;
+
+  &.light{
+    background-color: $white;
+  }
+  
+button.backBtn {
+  position: relative;
+  top: 60px;
+  margin-top: 40px;
+  margin-left: 60px;
+  width: 100px;
+  height: 40px;
+  border: none;
+  outline: none;
+  background-color: $dark-blue;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: $white;
+  box-shadow: $box-shadow;
+  cursor: pointer;
+
+  @include mobile{
+    margin-left: 30px;
+  }
+
+  i {
+    margin-right: 10px;
+  }
+
+  &:hover{
+    box-shadow: none;
+  }
+}
+
+&.light{
+  background-color: $white;
+
+  button.backBtn{
+    background-color: $white;
+    color: $dark-blue;
+  }
+}
 }

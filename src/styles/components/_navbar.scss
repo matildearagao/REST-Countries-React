@@ -2,18 +2,49 @@
   position: fixed;
   background-color: $dark-blue;
   height: 60px;
-  width: 100vw;
+  width: 100%;
   left: 0;
   top: 0;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   margin: 0 auto;
   padding: 0 60px;
   z-index: 10;
+  box-shadow: $box-shadow;
+
+  @include mobile{
+    padding: 0 10px;
+  }
+
+  button{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: $white;
+    display: flex;
+    flex-direction: row;
+    font-size: $font-big;
+    font-weight: 300;
+    cursor: pointer;
+  }
+
+  i{
+    margin-right: 10px;
+  }
+
 
   h2 {
     color: $white;
     font-size: $font-big;
     font-weight: 600;
+  }
+
+  &.light{
+    background-color: $white;
+
+    h2, i, p{
+      color: $dark-blue;
+    }
   }
 }
