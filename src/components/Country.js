@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 import { fetchCountry } from "../services/countries";
-import CountryWeather from "./CountryWeather";
+// import CountryWeather from "./CountryWeather";
 
 function Country({ match, mode }) {
   const [country, setCountry] = useState("");
@@ -50,7 +50,7 @@ function Country({ match, mode }) {
               src={country.flag}
               alt={country.name}
             />
-            <CountryWeather capital={country.capital} />
+            {/* <CountryWeather capital={country.capital} /> */}
           </div>
           <div className="country__right">
             <h1 className="country__name">{country.name} </h1>
