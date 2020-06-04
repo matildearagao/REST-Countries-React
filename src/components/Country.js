@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 import { fetchCountry } from "../services/countries";
+import FadeIn from "react-fade-in";
 // import CountryWeather from "./CountryWeather";
 
 function Country({ match, mode }) {
@@ -43,6 +44,7 @@ function Country({ match, mode }) {
           <i className="fa fa-arrow-left"></i>
           <p>Back</p>
         </button>
+        <FadeIn>
         <div className={`country ${mode}`}>
           <div className="country__left">
             <img
@@ -53,8 +55,10 @@ function Country({ match, mode }) {
             {/* <CountryWeather capital={country.capital} /> */}
           </div>
           <div className="country__right">
+          <FadeIn delay='200'>
             <h1 className="country__name">{country.name} </h1>
             <div className="country__details">
+             
               <div>
                 <p className="country__text">
                   <span>Native Name: </span> {country.nativeName}
@@ -85,6 +89,7 @@ function Country({ match, mode }) {
                   {languages}
                 </p>
               </div>
+           
             </div>
             <div className="country__borders">
               <p className="country__text">
@@ -108,8 +113,10 @@ function Country({ match, mode }) {
                 )}
               </ul>
             </div>
+            </FadeIn>
           </div>
         </div>
+          </FadeIn>
       </div>
     );
   } else return null;
